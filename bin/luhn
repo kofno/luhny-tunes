@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+$:.unshift File.expand_path('../../lib', __FILE__)
+
+if ARGV.empty?
+  $stderr.puts "Luhn requires a number to validate"
+  exit 1
+end
+
+require 'luhn'
+luhn = Luhn.new ARGV.first
+if luhn.valid?
+  puts "#{luhn.number} is valid."
+else
+  puts "#{luhn.number} is not valid."
+end
